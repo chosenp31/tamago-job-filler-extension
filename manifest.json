@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Tamago-DB 求人自動入力",
+  "version": "1.0.0",
+  "description": "求人情報をコピーしてTamago-DBの新規求人フォームに自動入力する拡張機能",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

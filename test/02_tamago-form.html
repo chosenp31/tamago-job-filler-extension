@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- tamago-db.com を含める（拡張機能のURL判定に必要） -->
+  <title>新規求人 - ジョーゼン株式会社 - Tamago-DB</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; color: #333; }
+    .banner { background: #d4edda; border: 1px solid #28a745; padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; }
+    .banner strong { color: #155724; }
+    .note { background: #fff3cd; border: 1px solid #ffc107; padding: 8px 12px; border-radius: 6px; margin-bottom: 20px; font-size: 12px; color: #856404; }
+    h1 { font-size: 20px; margin-bottom: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; color: #555; }
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group textarea,
+    .form-group select {
+      width: 100%; padding: 8px 12px; border: 1px solid #ccc; border-radius: 6px;
+      font-size: 14px; box-sizing: border-box; transition: box-shadow 0.3s, border-color 0.3s;
+    }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .form-row { display: flex; gap: 12px; }
+    .form-row .form-group { flex: 1; }
+    .section-title { font-size: 16px; font-weight: 700; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #1a73e8; color: #1a73e8; }
+    .salary-row { display: flex; gap: 8px; align-items: center; }
+    .salary-row input { flex: 1; }
+    .salary-row select { width: 80px; }
+    .salary-row .separator { font-size: 14px; color: #666; }
+  </style>
+</head>
+<body>
+
+<div class="banner">
+  <strong>検証用 Tamago-DB フォーム</strong> - このページで拡張機能の「2. Tamago-DBに貼り付け」ボタンを押してください。
+</div>
+
+<div class="note">
+  ※ このページはローカルファイルですが、拡張機能の貼り付け判定は「tamago-db.com」をURLに含むかチェックします。<br>
+  ローカルテスト時はpopup.jsの該当チェックを一時的にコメントアウトするか、下記の手順でテストしてください：<br>
+  <b>簡単な方法：</b> Chromeの開発者ツール(F12) → Console に以下を貼り付けて実行：<br>
+  <code>history.replaceState(null, '', '?tamago-db.com/job/new')</code><br>
+  これでURLに tamago-db.com が含まれるようになります。
+</div>
+
+<h1>新規求人</h1>
+
+<form id="job-form">
+
+  <!-- 基本情報 -->
+  <div class="section-title">基本情報</div>
+
+  <div class="form-group">
+    <label for="JobType_title">タイトル</label>
+    <input type="text" name="JobType[title]" id="JobType_title">
+  </div>
+
+  <div class="form-group">
+    <label for="JobType_headline">ヘッドライン</label>
+    <textarea name="JobType[headline]" id="JobType_headline" rows="2"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="JobType_company">企業</label>
+    <select name="JobType[company]" id="JobType_company">
+      <option value="">-- 選択してください --</option>
+      <option value="1">ジョーゼン株式会社</option>
+      <option value="2">テスト企業A</option>
+    </select>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="JobType_jobManager">この求人の採用担当者</label>
+      <select name="JobType[jobManager]" id="JobType_jobManager">
+        <option value="">-- 選択してください --</option>
+        <option value="1">山田太郎</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="JobType_user">担当者</label>
+      <select name="JobType[user]" id="JobType_user">
+        <option value="">-- 選択してください --</option>
+        <option value="1">田中一郎</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- 雇用情報 -->
+  <div class="section-title">雇用情報</div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="JobType_type">雇用タイプ</label>
+      <select name="JobType[type]" id="JobType_type">
+        <option value="">-- 選択してください --</option>
+        <option value="permanent">正社員</option>
+        <option value="contract">契約社員</option>
+        <option value="temporary">派遣社員</option>
+        <option value="parttime">パート・アルバイト</option>
+        <option value="freelance">業務委託</option>
+        <option value="intern">インターン</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="JobType_category">職種</label>
+      <select name="JobType[category]" id="JobType_category">
+        <option value="">-- 選択してください --</option>
+        <option value="1">ITコンサルタント</option>
+        <option value="2">エンジニア</option>
+        <option value="3">営業</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="JobType_typeDetail">雇用タイプ（詳細）</label>
+    <textarea name="JobType[typeDetail]" id="JobType_typeDetail" rows="2"></textarea>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="JobType_status">状況</label>
+      <select name="JobType[status]" id="JobType_status">
+        <option value="">-- 選択してください --</option>
+        <option value="open">募集中</option>
+        <option value="closed">終了</option>
+        <option value="hold">保留</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="JobType_industry">業種</label>
+      <select name="JobType[industry]" id="JobType_industry">
+        <option value="">-- 選択してください --</option>
+        <option value="1">IT・通信</option>
+        <option value="2">コンサルティング</option>
+        <option value="3">金融</option>
+        <option value="4">製造</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- 勤務地 -->
+  <div class="section-title">勤務地</div>
+
+  <div class="form-group">
+    <label for="JobType_location">勤務地</label>
+    <select name="JobType[location]" id="JobType_location">
+      <option value="">-- 選択してください --</option>
+      <option value="JP">日本</option>
+    </select>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="JobType_address_region">都道府県</label>
+      <input type="text" name="JobType[address][region]" id="JobType_address_region" placeholder="都道府県">
+    </div>
+    <div class="form-group">
+      <label for="JobType_address_city">市町村</label>
+      <input type="text" name="JobType[address][city]" id="JobType_address_city" placeholder="市町村">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="JobType_address_street">番地</label>
+      <input type="text" name="JobType[address][street]" id="JobType_address_street" placeholder="住所">
+    </div>
+    <div class="form-group">
+      <label for="JobType_address_extended">マンション名、ビル名など</label>
+      <input type="text" name="JobType[address][extended]" id="JobType_address_extended" placeholder="住所２">
+    </div>
+  </div>
+
+  <!-- 給与 -->
+  <div class="section-title">給与</div>
+
+  <div class="form-group">
+    <label>給与（下限）</label>
+    <div class="salary-row">
+      <input type="text" name="JobType[wage][amount]" id="JobType_wage_amount" placeholder="金額">
+      <select name="JobType[wage][currency]" id="JobType_wage_currency">
+        <option value="JPY">JPY</option>
+        <option value="USD">USD</option>
+      </select>
+      <select name="JobType[wage][basis]" id="JobType_wage_basis">
+        <option value="">-- 期間 --</option>
+        <option value="yearly">年</option>
+        <option value="monthly">月</option>
+        <option value="daily">日</option>
+        <option value="hourly">時</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>給与（上限）</label>
+    <div class="salary-row">
+      <input type="text" name="JobType[maximumWage][amount]" id="JobType_maximumWage_amount" placeholder="金額">
+      <select name="JobType[maximumWage][currency]" id="JobType_maximumWage_currency">
+        <option value="JPY">JPY</option>
+        <option value="USD">USD</option>
+      </select>
+      <select name="JobType[maximumWage][basis]" id="JobType_maximumWage_basis">
+        <option value="">-- 期間 --</option>
+        <option value="yearly">年</option>
+        <option value="monthly">月</option>
+        <option value="daily">日</option>
+        <option value="hourly">時</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="JobType_wageDetails">給与詳細</label>
+    <textarea name="JobType[wageDetails]" id="JobType_wageDetails" rows="3"></textarea>
+  </div>
+
+  <!-- 求人内容 -->
+  <div class="section-title">求人内容</div>
+
+  <div class="form-group">
+    <label for="JobType_description">公開求人情報</label>
+    <textarea name="JobType[description]" id="JobType_description" rows="8"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="JobType_privateDescription">非公開求人情報</label>
+    <textarea name="JobType[privateDescription]" id="JobType_privateDescription" rows="4"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="JobType_pitch">求人概要</label>
+    <textarea name="JobType[pitch]" id="JobType_pitch" rows="4"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="JobType_requirements">応募資格</label>
+    <textarea name="JobType[requirements]" id="JobType_requirements" rows="8"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="JobType_benefits">福利厚生</label>
+    <textarea name="JobType[benefits]" id="JobType_benefits" rows="4"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="JobType_certification">資格</label>
+    <textarea name="JobType[certification]" id="JobType_certification" rows="2"></textarea>
+  </div>
+
+  <!-- その他 -->
+  <div class="section-title">その他</div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="JobType_educationLevel">求められる学力</label>
+      <select name="JobType[educationLevel]" id="JobType_educationLevel">
+        <option value="">-- 選択してください --</option>
+        <option value="1">大学卒</option>
+        <option value="2">大学院卒</option>
+        <option value="3">高校卒</option>
+        <option value="4">不問</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="JobType_openings">採用人数</label>
+      <input type="number" name="JobType[openings]" id="JobType_openings">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="JobType_reasonToHire">募集背景</label>
+      <select name="JobType[reasonToHire]" id="JobType_reasonToHire">
+        <option value="">-- 選択してください --</option>
+        <option value="1">増員</option>
+        <option value="2">欠員補充</option>
+        <option value="3">新規事業</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="JobType_visaRequirement">ビザ条件</label>
+      <select name="JobType[visaRequirement]" id="JobType_visaRequirement">
+        <option value="">-- 選択してください --</option>
+        <option value="1">不問</option>
+        <option value="2">就労ビザ必要</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="JobType_workingHours">勤務時間</label>
+    <textarea name="JobType[workingHours]" id="JobType_workingHours" rows="2"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="JobType_holidays">休日・休暇</label>
+    <textarea name="JobType[holidays]" id="JobType_holidays" rows="2"></textarea>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="JobType_contractFee">紹介料率 (%)</label>
+      <input type="text" name="JobType[contractFee]" id="JobType_contractFee">
+    </div>
+    <div class="form-group">
+      <label for="JobType_startDate">開始日</label>
+      <input type="text" name="JobType[startDate]" id="JobType_startDate" placeholder="yyyy-mm-dd">
+    </div>
+  </div>
+
+  <input type="hidden" name="JobType[_token]" id="JobType__token" value="dummy_token">
+
+</form>
+
+</body>
+</html>
