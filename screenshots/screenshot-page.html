@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { width: 1280px; height: 800px; background: #f0f2f5; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+
+    .container { display: flex; gap: 40px; align-items: center; padding: 40px; }
+
+    /* Left: Job posting page mockup */
+    .page-mockup {
+      width: 480px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .page-bar {
+      background: #e8eaed;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .page-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .page-dot.r { background: #ff5f57; }
+    .page-dot.y { background: #febc2e; }
+    .page-dot.g { background: #28c840; }
+    .page-url {
+      margin-left: 12px;
+      background: #fff;
+      border-radius: 4px;
+      padding: 4px 12px;
+      font-size: 11px;
+      color: #666;
+      flex: 1;
+    }
+    .page-body { padding: 24px; }
+    .page-body h3 { font-size: 16px; margin-bottom: 4px; color: #333; }
+    .page-body .subtitle { font-size: 13px; color: #666; margin-bottom: 16px; }
+    .job-field { margin-bottom: 12px; }
+    .job-field .label { font-size: 10px; color: #999; margin-bottom: 2px; }
+    .job-field .value { font-size: 13px; color: #333; }
+
+    /* Center: Arrow + Popup */
+    .center-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .popup-mockup {
+      width: 260px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+      padding: 16px;
+    }
+    .popup-mockup h4 { font-size: 14px; color: #1a73e8; margin-bottom: 12px; }
+    .popup-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .popup-btn.copy { background: #1a73e8; }
+    .popup-btn.paste { background: #34a853; }
+    .popup-btn.clear { background: #f1f3f4; color: #666; font-weight: 400; font-size: 11px; }
+    .popup-status {
+      margin-top: 8px;
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      background: #e6f4ea;
+      color: #1e7e34;
+    }
+
+    .arrow {
+      font-size: 48px;
+      color: #1a73e8;
+      line-height: 1;
+    }
+    .step-label {
+      font-size: 13px;
+      color: #666;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* Right: Tamago form mockup */
+    .form-mockup {
+      width: 480px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .form-body { padding: 24px; }
+    .form-body h3 { font-size: 16px; margin-bottom: 16px; color: #333; }
+    .form-field { margin-bottom: 12px; }
+    .form-field .label { font-size: 11px; color: #666; margin-bottom: 4px; }
+    .form-field input, .form-field select, .form-field textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 12px;
+      color: #333;
+      font-family: inherit;
+    }
+    .form-field.filled input,
+    .form-field.filled select,
+    .form-field.filled textarea {
+      box-shadow: 0 0 0 2px rgba(52, 168, 83, 0.3);
+      border-color: #34a853;
+      background: #f8fff8;
+    }
+    .form-field textarea { height: 48px; resize: none; }
+
+    .flow-arrows {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 8px 0;
+    }
+    .flow-line {
+      height: 2px;
+      flex: 1;
+      background: linear-gradient(90deg, #1a73e8, #34a853);
+    }
+    .flow-step {
+      background: #1a73e8;
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .flow-step.s2 { background: #34a853; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Left: Job Posting -->
+    <div class="page-mockup">
+      <div class="page-bar">
+        <div class="page-dot r"></div>
+        <div class="page-dot y"></div>
+        <div class="page-dot g"></div>
+        <div class="page-url">求人サイト - 求人詳細ページ</div>
+      </div>
+      <div class="page-body">
+        <h3>201_C,SCクラス</h3>
+        <div class="subtitle">【関西支社立ち上げ】コンサルタント・シニアコンサルタント候補</div>
+        <div class="job-field"><div class="label">雇用形態</div><div class="value">正社員</div></div>
+        <div class="job-field"><div class="label">給与</div><div class="value">年収 4,000,000円 - 12,000,000円</div></div>
+        <div class="job-field"><div class="label">勤務地</div><div class="value">大阪府大阪市</div></div>
+        <div class="job-field"><div class="label">応募資格</div><div class="value">コンサルティング経験3年以上...</div></div>
+        <div class="job-field"><div class="label">福利厚生</div><div class="value">社会保険完備、交通費支給...</div></div>
+
+        <div style="margin-top:16px; display:flex; align-items:center; gap:8px;">
+          <div class="flow-step">1</div>
+          <span style="font-size:12px;color:#1a73e8;font-weight:600;">求人情報をコピー</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center: Arrow -->
+    <div class="center-area">
+      <div class="popup-mockup">
+        <h4>Tamago-DB 求人自動入力</h4>
+        <div class="popup-btn copy">1. 求人情報をコピー</div>
+        <div class="popup-btn paste">2. Tamago-DBに貼り付け</div>
+        <div class="popup-btn clear">保存データをクリア</div>
+        <div class="popup-status">8件の項目をコピーしました</div>
+      </div>
+      <div class="arrow">→</div>
+    </div>
+
+    <!-- Right: Tamago Form -->
+    <div class="form-mockup">
+      <div class="page-bar">
+        <div class="page-dot r"></div>
+        <div class="page-dot y"></div>
+        <div class="page-dot g"></div>
+        <div class="page-url">tamago-db.com - 新規求人登録</div>
+      </div>
+      <div class="form-body">
+        <h3>新規求人登録フォーム</h3>
+        <div class="form-field filled"><div class="label">タイトル</div><input value="201_C,SCクラス" readonly></div>
+        <div class="form-field filled"><div class="label">ヘッドライン</div><input value="【関西支社立ち上げ】コンサルタント・シニアコンサルタント候補" readonly></div>
+        <div class="form-field filled"><div class="label">雇用タイプ</div><select><option selected>正社員</option></select></div>
+        <div class="form-field filled"><div class="label">給与下限</div><input value="4,000,000" readonly></div>
+        <div class="form-field filled"><div class="label">給与上限</div><input value="12,000,000" readonly></div>
+        <div class="form-field filled"><div class="label">勤務地</div><input value="大阪府 大阪市" readonly></div>
+
+        <div style="margin-top:12px; display:flex; align-items:center; gap:8px;">
+          <div class="flow-step s2">2</div>
+          <span style="font-size:12px;color:#34a853;font-weight:600;">自動入力完了（緑色ハイライト）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
